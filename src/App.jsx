@@ -1,16 +1,7 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Examns } from "./components/Examns";
+import React from 'react'
 
-function App() {
-
+export default function App() {
   return (
-    <>
-     <Examns/>
-    </>
-  );
+    <div>App</div>
+  )
 }
-
-export default App;
