@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import book from "./Icons/circulo.png";
+import book from "./Icons/logo.jpeg";
 
 export const Nav = () => {
   return (
-    <div className="bg-[#0a8537] flex justify-between h-[70px] items-center">
-      <img src={book} alt="book icon" className="w-[42px] h-[42px] ml-[30px]" />
+    <div className="bg-[#0a8537] flex justify-between h-[10vh] items-center">
+      <img src={book} alt="book icon" className="w-[42px] h-[42px] ml-[30px] rounded-xl" />
       <nav className="flex items-center">
         <ul className="flex gap-8 px-[30px] text-white">
           <li className="hover:underline">

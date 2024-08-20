@@ -8,7 +8,7 @@ export const LayoutNav = () => {
     <Router>
       <Nav /> 
       <Routes>
-        <Route path="/" element={<Home />} /> {/* El contenido dinámico */}
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
