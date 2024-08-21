@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Data from './../examenCompleto.json'
 import { Link } from 'react-router-dom'
+import { ExamContext } from '../context/ExamContext-'
 
 export const Examns = () => {
-
+const {data} = useContext(ExamContext)
+console.log(data);
     return (
         <main className=' w-full h-[90%] py-8 bg-[#baf1cf] '>
             <h1 className='font-semibold text-[50px] text-center pb-4'>Examenes</h1>
