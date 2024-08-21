@@ -18,9 +18,9 @@ export const Exam = () => {
                 <section className='w-full flex flex-col gap-4 bg-white rounded-2xl p-8'>
                     <h2 className='font-semibold text-[1.5rem]'>PREGUNTAS</h2>
                     {
-                        exam.questions.map((q) => (
+                        exam.questions.map((q,index) => (
 
-                            <div>
+                            <div key={index} >
                                 {
                                     (q.type === "multiple") &&
                                     <div className='flex flex-col gap-4'>
