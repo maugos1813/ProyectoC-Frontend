@@ -17,7 +17,7 @@ export const ExamProvider = ({children}) => {
         queryFn: UserById,
         enabled: pathname === '/'
     });
-    console.log(data);
+    
     return (
         <ExamContext.Provider value={{data}}>
             {children}
