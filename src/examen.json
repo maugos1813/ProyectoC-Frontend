@@ -1,0 +1,178 @@
+[
+    {
+      "id": 1,
+      "name": "Fundamentos de JavaScript",
+      "autor": "Juan Pérez",
+      "level": "Básico",
+      "questions": [
+        {
+          "id": 101,
+          "pregunta": "¿Qué es una variable en JavaScript?",
+          "opciones": [
+            "Un valor constante",
+            "Un contenedor para almacenar datos",
+            "Una función que se ejecuta automáticamente"
+          ]
+        },
+        {
+          "id": 102,
+          "pregunta": "¿Cuál es el operador para la suma en JavaScript?",
+          "opciones": [
+            "+",
+            "*",
+            "/"
+          ]
+        },
+        {
+          "id": 103,
+          "pregunta": "¿Cómo se define una función en JavaScript?",
+          "opciones": [
+            "function myFunction() {}",
+            "var myFunction = {}",
+            "function = myFunction() {}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "React Avanzado",
+      "autor": "Ana López",
+      "level": "Intermedio",
+      "questions": [
+        {
+          "id": 201,
+          "pregunta": "¿Qué es un Hook en React?",
+          "opciones": [
+            "Una función que permite usar estado y otros recursos de React",
+            "Un componente de clase",
+            "Un método para definir estilos"
+          ]
+        },
+        {
+          "id": 202,
+          "pregunta": "¿Cuál es el Hook utilizado para manejar efectos secundarios?",
+          "opciones": [
+            "useState",
+            "useEffect",
+            "useReducer"
+          ]
+        },
+        {
+          "id": 203,
+          "pregunta": "¿Qué función se utiliza para crear componentes de React?",
+          "opciones": [
+            "render()",
+            "createComponent()",
+            "return()"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Node.js y Express",
+      "autor": "Carlos García",
+      "level": "Avanzado",
+      "questions": [
+        {
+          "id": 301,
+          "pregunta": "¿Qué es Express en Node.js?",
+          "opciones": [
+            "Un módulo para manejar archivos",
+            "Un framework para construir aplicaciones web",
+            "Una herramienta de manejo de bases de datos"
+          ]
+        },
+        {
+          "id": 302,
+          "pregunta": "¿Cómo se define una ruta en Express?",
+          "opciones": [
+            "app.route('/path')",
+            "app.get('/path', function(req, res) {})",
+            "app.newRoute('/path')"
+          ]
+        },
+        {
+          "id": 303,
+          "pregunta": "¿Qué puerto se suele utilizar por defecto en Node.js?",
+          "opciones": [
+            "80",
+            "3000",
+            "8080"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Bases de Datos Relacionales",
+      "autor": "Laura Martínez",
+      "level": "Básico",
+      "questions": [
+        {
+          "id": 401,
+          "pregunta": "¿Qué es una base de datos relacional?",
+          "opciones": [
+            "Un sistema para almacenar y organizar datos",
+            "Una base de datos que no tiene relaciones entre tablas",
+            "Un sistema para análisis de datos"
+          ]
+        },
+        {
+          "id": 402,
+          "pregunta": "¿Cuál es el lenguaje utilizado para interactuar con bases de datos relacionales?",
+          "opciones": [
+            "SQL",
+            "HTML",
+            "Python"
+          ]
+        },
+        {
+          "id": 403,
+          "pregunta": "¿Cómo se realiza una consulta en SQL para seleccionar todos los datos de una tabla?",
+          "opciones": [
+            "SELECT * FROM table_name",
+            "GET * FROM table_name",
+            "FETCH * FROM table_name"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Seguridad Web",
+      "autor": "Pedro Ramírez",
+      "level": "Intermedio",
+      "questions": [
+        {
+          "id": 501,
+          "pregunta": "¿Qué es XSS (Cross-site Scripting)?",
+          "opciones": [
+            "Una vulnerabilidad que permite la ejecución de scripts maliciosos en el navegador",
+            "Una herramienta para optimizar el rendimiento de sitios web",
+            "Un tipo de cifrado de datos"
+          ]
+        },
+        {
+          "id": 502,
+          "pregunta": "¿Qué significa HTTPS?",
+          "opciones": [
+            "Hyper Text Transfer Protocol Secure",
+            "Hyper Text Transfer Protocol System",
+            "Hyper Transfer Protocol Script"
+          ]
+        },
+        {
+          "id": 503,
+          "pregunta": "¿Cómo se asegura la integridad de los datos en una aplicación web?",
+          "opciones": [
+            "Usando cifrado",
+            "Haciendo copias de seguridad frecuentes",
+            "Filtrando los datos de entrada"
+          ]
+        }
+      ]
+    }
+  ]
+  
