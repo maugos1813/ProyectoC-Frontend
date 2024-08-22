@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
+import { Link } from "react-router-dom";
 
 
 const VideoPreview = ({ stream }) => {
@@ -22,19 +23,22 @@ const VideoPreview = ({ stream }) => {
 export const RecordView = () => (
 
 
-    <div className=" w-full  h-[90%] p-12 flex ">
+    <div className=" w-full  h-screen flex flex-col bg-[#def5e6] ">
+
         <ReactMediaRecorder
             video
             render={({ startRecording, previewStream, pauseRecording, resumeRecording, stopRecording, mediaBlobUrl, clearBlobUrl }) => {
                 return (
-                    <section className="flex flex-col w-[70%] h-fit m-auto items-center border-[1px] border-[#0A8537] p-8 rounded-2xl ">
+                    <section className="flex flex-col w-[70%] h-fit m-auto items-center border-[1px] border-[#0A8537] p-8 rounded-2xl bg-white ">
+                        <Link className="mr-auto" >{'<'}Volver al Examen</Link>
+                        <h1 className="text-[2rem] font-semibold ">Graba tu video aqui:</h1>
                         <section>
                             <section className="flex flex-col gap-8 py-8">
                                 <section className="border-[1px] border-[#0A8537] flex gap-2 outline-none rounded-2xl px-4 py-2 ">
-                                    <label htmlFor="titulo">Titulo: </label> <input className="w-[80%] " id='titulo' name="titulo" type="text" placeholder="Ingresa el titulo de tu video" />
+                                    <label htmlFor="titulo">Titulo: </label> <input className="w-[80%] outline-none focus:bg-[#ecfaf1]  " id='titulo' name="titulo" type="text" placeholder="Ingresa el titulo de tu video" />
                                 </section>
                                 <section className="border-[1px] border-[#0A8537] flex gap-2 outline-none rounded-2xl px-4 py-2 ">
-                                    <label htmlFor="usuario">Usuario: </label>  <input className="w-[80%] " id='usuario' name="usuario" type="text" placeholder="Ingresa tu nombre de usuario" />
+                                    <label htmlFor="usuario">Usuario: </label>  <input className="w-[80%] outline-none focus:bg-[#ecfaf1]" id='usuario' name="usuario" type="text" placeholder="Ingresa tu nombre de usuario" />
                                 </section>
                             </section>
                             {!mediaBlobUrl ?
@@ -53,9 +57,8 @@ export const RecordView = () => (
                                 <a className="bg-[#0A8537] text-white w-[20%] p-2 rounded-2xl flex items-center justify-center cursor-pointer"
                                     href={mediaBlobUrl}
                                     download={`${new Date}.mp4`}>
-                                    Descargar
+                                    Guardar Video
                                 </a>
-                                <button className="bg-[#0A8537] text-white p-2 rounded-2xl" type="submit">Enviar</button>
                             </div>
 
                         </section>
