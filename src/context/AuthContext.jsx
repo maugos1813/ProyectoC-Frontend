@@ -1,7 +1,7 @@
-import { useMutation } from "@tanstack/react-query";
-import { Children, createContext, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { loginUser } from "../services/service";
+import { infoUser, loginUser } from "../services/service";
 
 export const AuthContext = createContext();
 
@@ -18,15 +18,26 @@ export const AuthProvider = ({ children }) => {
     onError: (data) => alert(data.response.data.message),
     onSuccess: ({ data }) => {
       localStorage.setItem("tokenLogin", data.token);
-      setUser(data.user);
-      navigate("/dasboard");
+      localStorage.setItem("userId", data.user);
+      navigate("/dashboard");
     },
   });
 
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['user'],
+    queryFn: infoUser ,
+    enabled: pathname === '/dashboard'
+    
+});
+
+useEffect(()=>{
+  setUser(data)        
+},[data])
   return (
     <AuthContext.Provider
       value={{
         loginMutation,
+        user
       }}
     >
         {children}

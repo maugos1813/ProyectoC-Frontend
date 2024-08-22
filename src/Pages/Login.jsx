@@ -19,11 +19,11 @@ export const Login = () => {
             <h1>LOGIN</h1>
             <label htmlFor="username">
                 Email: 
-                <input type="text" name='email' placeholder='email' className='border w-[318px] h-[48px] rounded-xl px-6' />
+                <input type="text" id='username' name='email' placeholder='email' className='border w-[318px] h-[48px] rounded-xl px-6' />
             </label>
             <label htmlFor="password">
                 Password:
-                <input type="text" name="password" placeholder='password' className='border w-[318px] h-[48px] rounded-xl px-6'/>
+                <input type="text" id='password' name="password" placeholder='password' className='border w-[318px] h-[48px] rounded-xl px-6'/>
             </label>
             <button type='submit' className='bg-blue-400 w-[318px] h-[48px] rounded-md'>Enviar</button>
         </form>

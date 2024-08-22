@@ -1,8 +1,9 @@
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export const UserById = async (id) => {
     const user = await axios.get('http://localhost:3000/api/users/66c524b725f1875626d8db6b')
-    console.log(user);
     return user
 }
 
@@ -12,7 +13,6 @@ export const loginUser = async ({email, password}) => {
             email,
             password,
         })
-        console.log(response)
         return response
         
     } catch (error) {
@@ -20,3 +20,17 @@ export const loginUser = async ({email, password}) => {
         throw error
     }
 }
+
+export const infoUser = async () => {
+    const token = localStorage.getItem('tokenLogin')
+    const info = await axios.get('http://localhost:3000/api/auth/me', {
+        headers: { Authorization: token }
+    })
+    return info.data
+}
+export const examenes = async () => {
+    
+    const examens = await axios.get('http://localhost:3000/api/exams')
+    return examens.data
+}
+

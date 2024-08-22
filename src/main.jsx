@@ -12,11 +12,11 @@ createRoot(document.getElementById("root")).render(
   // <StrictMode>
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-      <ExamProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <ExamProvider>
           <App />
-        </AuthProvider>
-      </ExamProvider>
+        </ExamProvider>
+      </AuthProvider>
     </BrowserRouter>
   </QueryClientProvider>
 
