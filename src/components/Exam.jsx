@@ -10,7 +10,7 @@ export const Exam = () => {
 
     return (
         <main className='w-full h-full flex flex-col p-8 gap-8 border-[1px] bg-[#baf1cf]'>
-            <section className='w-full  flex flex-col gap-8 ' >
+            {/* <section className='w-full  flex flex-col gap-8 ' >
                 <h1 className='font-semibold text-center text-[2.5rem]'>{exam.name}</h1>
                 <h3 className='font-semibold text-center text-[1.5rem]'>Prof. {exam.autor}</h3>
                 <Link className='text-[1.2rem]' to={'/'}>{'<'}Volver a Examenes</Link>
@@ -67,7 +67,7 @@ export const Exam = () => {
                     }
                     <button className='bg-[#0A8537]  rounded-xl p-3 text-white font-semibold'>Enviar Respuestas</button>
                 </section>
-            </section>
+            </section> */}
 
         </main >
     )
