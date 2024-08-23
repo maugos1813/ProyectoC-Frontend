@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const Dashboard = () => {
     const { user } = useContext(AuthContext)
-   // console.log(user);
+    console.log(user);
 
     return (
         <div>

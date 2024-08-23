@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
+//import { FaUser, FaLock } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 
-const Login = () => {
+export const Login = () => {
   const { loginMutation } = useContext(AuthContext);
 
   const handleLogin = async (e) => {
@@ -11,7 +11,7 @@ const Login = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-
+console.log(data);
     await loginMutation.mutateAsync(data);
   };
   return (
@@ -25,7 +25,7 @@ const Login = () => {
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700">Email</label>
             <div className="flex items-center border rounded">
-              <FaUser className="text-gray-500 ml-2" />
+             {/*  <FaUser className="text-gray-500 ml-2" /> */}
               <input
                 type="email"
                 placeholder="me@example.com"
@@ -38,9 +38,9 @@ const Login = () => {
           <div className="mb-4">
             <label htmlFor="password" className="block text-gray-700">Password</label>
             <div className="flex items-center border rounded">
-              <FaLock className="text-gray-500 ml-2" />
+             {/*  <FaLock className="text-gray-500 ml-2" /> */}
               <input
-                type="password"
+                type="text"
                 className="w-full px-3 py-2 border-none rounded-r"
                 name="password"
                 id="password"
@@ -59,4 +59,3 @@ const Login = () => {
   );
 };
 
-export default Login;

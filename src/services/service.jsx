@@ -7,12 +7,9 @@ export const UserById = async (id) => {
     return user
 }
 
-export const loginUser = async ({email, password}) => {
+export const loginUser = async (data) => {
     try {
-        const response = await axios.post('http://localhost:3000/api/auth/login', {
-            email,
-            password,
-        })
+        const response = await axios.post('http://localhost:3000/api/auth/login', data)
         return response
         
     } catch (error) {
@@ -33,4 +30,11 @@ export const examenes = async () => {
     const examens = await axios.get('http://localhost:3000/api/exams')
     return examens.data
 }
+
+export const videosAll = async () => {
+    
+    const video = await axios.get('http://localhost:3000/api/video')
+    return video.data
+}
+
 
