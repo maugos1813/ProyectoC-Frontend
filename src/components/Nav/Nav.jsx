@@ -9,13 +9,13 @@ export const Nav = () => {
       <nav className="flex items-center">
         <ul className="flex gap-8 px-[30px] text-white">
           <li className="hover:underline">
-            <Link to="/">Welcome</Link>
+            <Link to="/dashboard">Home</Link>
           </li>
           <li className="hover:underline">
             <Link to="/profile">Profile</Link>
           </li>
           <li className="hover:underline">
-            <Link to="/exams">Exams</Link>
+            <Link to="/examenes">Exams</Link>
           </li>
           <li className="hover:underline">
             <Link to="/videos">Videos</Link>
