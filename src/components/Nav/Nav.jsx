@@ -5,7 +5,7 @@ import book from "./Icons/logo.jpeg";
 export const Nav = () => {
   return (
     <div>
-      <div className="bg-[#0a8537] flex justify-between h-[10vh] items-center">
+      <div className="bg-green-500 flex justify-between h-[10vh] items-center">
         <img
           src={book}
           alt="book icon"
