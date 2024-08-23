@@ -11,9 +11,6 @@ const Dashboard = () => {
   console.log(user);
   return (
     <div className="">
-      {/* <Navbar/> */}
-      <Nav/>
-      {/* <LayoutNav/> */}
       <div className="p-8">
         <h1 className="text-2xl font-bold mb-4">
           Welcome to the Student Portal: {user?.firstName}
