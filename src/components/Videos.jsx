@@ -3,13 +3,16 @@ import { ExamContext } from '../context/ExamContext-';
 import { Link } from 'react-router-dom';
 
 export const Videos = () => {
- const {videos} = useContext(ExamContext)
+// const {videos} = useContext(ExamContext)
 
-    console.log(videos);
+ //   console.log(videos);
     return (
         <main className=' w-full h-[90%] py-8 bg-[#baf1cf] '>
             <h1 className='font-semibold text-[50px] text-center pb-4'>MIS VIDEOS</h1>
             <Link to={'/dashboard'} className='text-[20px] text-center px-8'>{'<'} Volver al Panel</Link>
+           <video autoPlay src={`http://localhost:3000/api/video/videoR/1724442447290-1724356206391-Gato bailando diriri da diri dou dou.mp4`}/>
+           
+           
             {/* <section className='grid - grid-cols-2 py-4 px-8 gap-8 w-full'>
                 {videos &&
                     videos.map((dato, index) =>
