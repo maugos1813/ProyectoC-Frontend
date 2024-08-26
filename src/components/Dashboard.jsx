@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { Navbar } from "./Navbar";
-import { LayoutNav } from "./LayoutNav";
-import { Nav } from "./Nav/Nav";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext)

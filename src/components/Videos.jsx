@@ -9,7 +9,7 @@ export const Videos = () => {
     return (
         <main className=' w-full h-[90%] py-8 bg-[#baf1cf] '>
             <h1 className='font-semibold text-[50px] text-center pb-4'>MIS VIDEOS</h1>
-            <Link to={'/dashboard'} className='text-[20px] text-center px-8'>{'<'} Volver al Panel</Link>
+            <Link to='/dashboard' className='text-[20px] text-center px-8'>{'<'} Volver al Panel</Link>
             <section className='grid - grid-cols-2 py-4 px-8 gap-8 w-full'>
                 {/* {examens &&
                     examens.map((dato, index) =>
