@@ -22,6 +22,7 @@ export default function App() {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/examenes" element={<Examns />}/>
           <Route path="/videos" element={<Videos />}/>
+          <Route path="/Recording" element={<RecordView />}/>
         </Route>
 
         <Route path="/exam/:id" element={<Exam />} />

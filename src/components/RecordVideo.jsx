@@ -1,9 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
 import { Link } from "react-router-dom";
 
 
 const VideoPreview = ({ stream }) => {
+    const [newVideo, setNewVideo] = useState('')
 
     const videoRef = useRef(null);
 
@@ -20,10 +21,15 @@ const VideoPreview = ({ stream }) => {
     return <video className="rounded-2xl " ref={videoRef} width={700} height={700} autoPlay />;
 }
 
-export const RecordView = () => (
 
 
-    <div className=" w-full  h-screen flex flex-col bg-[#def5e6] ">
+export const RecordView = () => {
+
+    function saveVideo(e) {
+       console.log( e.target.value)
+    }
+
+    return (<div className=" w-full  h-screen flex flex-col bg-[#def5e6] ">
 
         <ReactMediaRecorder
             video
@@ -54,16 +60,18 @@ export const RecordView = () => (
                                 <button className="bg-[#0A8537] text-white p-2 rounded-2xl" onClick={clearBlobUrl}>Volver a intentar</button>
                             </div>
                             <div className="flex  w-full justify-center bg-[#baf1cf] rounded-b-2xl py-4 gap-8">
-                                <a className="bg-[#0A8537] text-white w-[20%] p-2 rounded-2xl flex items-center justify-center cursor-pointer"
-                                    href={mediaBlobUrl}
-                                    download={`${new Date}.mp4`}>
+                                <button className="bg-[#0A8537] text-white w-[20%] p-2 rounded-2xl flex items-center justify-center cursor-pointer"
+                                    onClick={saveVideo}
+                                    value={mediaBlobUrl}
+                                    /* href={mediaBlobUrl} */
+                                    /* download={`${new Date}.mp4`} */>
                                     Guardar Video
-                                </a>
+                                </button>
                             </div>
 
                         </section>
                     </section>)
             }}
         />
-    </div>
-)
+    </div>)
+}
