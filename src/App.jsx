@@ -8,7 +8,7 @@ import { RecordView } from "./components/RecordVideo";
 import { NotFound } from "./pages/NotFound";
 import { Nav } from "./components/Nav/Nav";
 import { Profile } from "./pages/Profile";
-import { DashM } from "./pagesM/DashM";
+import { NavM } from "./pagesM/NavM";
 import { Tablas } from "./pagesM/Tablas";
 import { CreationE } from "./pagesM/CreationE";
 import { Videos } from "./components/Videos";
@@ -29,10 +29,10 @@ export default function App() {
           <Route path="/Recording" element={<RecordView />}/>
         </Route>
 
-        <Route path="/exams/:id" element={<Exam/>}/>
+        <Route path="/exam/:id" element={<Exam/>}/>
         <Route path="*" element={<NotFound />} />
 
-        <Route path="/dashM" element={<DashM/>}/>
+        <Route path="/dashM" element={<NavM/>}/>
         <Route path="/tablas" element={<Tablas/>}/>
         <Route path="/creation" element={<CreationE/>}/>
       </Routes>

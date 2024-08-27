@@ -9,7 +9,6 @@ import { ExamProvider } from "./context/ExamContext-.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { AuthProvider as AlumnsAuthProvider } from "./context/AlumnsContext.jsx";
-import { AuthProvider as CreateAuthProvier } from "./context/CreateEContextM.jsx";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
@@ -19,9 +18,9 @@ createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <AlumnsAuthProvider>
           <ExamProvider>
-            <CreateAuthProvier>
+            
               <App />
-            </CreateAuthProvier>
+           
           </ExamProvider>
         </AlumnsAuthProvider>
       </AuthProvider>
@@ -29,3 +28,4 @@ createRoot(document.getElementById("root")).render(
   </QueryClientProvider>
   // </StrictMode>,
 );
+
