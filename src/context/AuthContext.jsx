@@ -8,7 +8,6 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const rutasIgnoradas = ["/"];
 
   const [user, setUser] = useState(null);
 
@@ -17,23 +16,32 @@ export const AuthProvider = ({ children }) => {
     mutationFn: loginUser,
     onError: (data) => alert(data.message),
     onSuccess: ({ data }) => {
-     
       localStorage.setItem("tokenLogin", data.token);
       localStorage.setItem("userId", data.user);
-      navigate("/dashboard");
     },
   });
+
+/*   useEffect(()=>{
+    const { data:user , isLoading, isError } = useQuery({
+      queryKey: ['user'],
+      queryFn: infoUser })
+
+      console.log(user);
+  },[data])
+   */
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['user'],
     queryFn: infoUser ,
-    enabled: pathname === ('/dashboard')
-    
+    enabled: Boolean(localStorage.getItem("userId"))
 });
 
 useEffect(()=>{
-  setUser(data)    
-  console.log("User data:", data)   
+setUser(data) 
+
+if(data?.type === "student") {navigate('/dashboard')}
+else if(data?.type === "teacher") {navigate('/dashboard2')}
+  else { navigate('/')}
 },[data])
 
 
