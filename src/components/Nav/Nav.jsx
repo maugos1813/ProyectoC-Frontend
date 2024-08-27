@@ -4,8 +4,8 @@ import book from "./Icons/logo.jpeg";
 
 export const Nav = () => {
   return (
-    <div>
-      <div className="bg-green-500 flex justify-between h-[10vh] items-center">
+    <div className="">
+      <div className="bg-sky-500 flex justify-between h-[10vh] items-center rounded-3xl mt-2">
         <img
           src={book}
           alt="book icon"
@@ -15,9 +15,6 @@ export const Nav = () => {
           <ul className="flex gap-8 px-[30px] text-white">
             <li className="hover:underline">
               <Link to="/dashboard">Home</Link>
-            </li>
-            <li className="hover:underline">
-              <Link to="/profile">Profile</Link>
             </li>
             <li className="hover:underline">
               <Link to="/examenes">Exams</Link>

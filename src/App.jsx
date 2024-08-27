@@ -8,11 +8,9 @@ import { RecordView } from "./components/RecordVideo";
 import { NotFound } from "./pages/NotFound";
 import { Nav } from "./components/Nav/Nav";
 import { Profile } from "./pages/Profile";
-
 import { DashM } from "./pagesM/DashM";
 import { Tablas } from "./pagesM/Tablas";
 import { CreationE } from "./pagesM/CreationE";
-
 import { Videos } from "./components/Videos";
 
 
