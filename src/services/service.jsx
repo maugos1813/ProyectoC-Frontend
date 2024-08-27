@@ -33,8 +33,15 @@ export const examenes = async () => {
 
 export const videosAll = async () => {
     
-    const video = await axios.get('http://localhost:3000/api/video/videoR/1724442447290-1724356206391-Gato bailando diriri da diri dou dou.mp4')
+    const video = await axios.get('http://localhost:3000/api/video')
     return video.data
 }
+
+/* export const videosName = async () => {
+    
+    const video = await axios.get('http://localhost:3000/api/video/videoR/s{}')
+    return video.data
+} */
+
 
 
