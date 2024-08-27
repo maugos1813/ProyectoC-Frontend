@@ -37,4 +37,11 @@ export const videosAll = async () => {
     return video.data
 }
 
+/* export const videosName = async () => {
+    
+    const video = await axios.get('http://localhost:3000/api/video/videoR/s{}')
+    return video.data
+} */
+
+
 

@@ -15,8 +15,9 @@ export const AuthProvider = ({ children }) => {
   const loginMutation = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
-    onError: (data) => alert(data.response.data.message),
+    onError: (data) => alert(data.message),
     onSuccess: ({ data }) => {
+     
       localStorage.setItem("tokenLogin", data.token);
       localStorage.setItem("userId", data.user);
       navigate("/dashboard");
