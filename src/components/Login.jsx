@@ -11,7 +11,6 @@ export const Login = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-console.log(data);
     await loginMutation.mutateAsync(data);
   };
   return (

@@ -36,6 +36,7 @@ export const videosAll = async () => {
     return video.data
 }
 
+
 export const getAll = async () => {
     const response = await axios.get('http://localhost:3000/api/users/');
     return response.data;
@@ -45,5 +46,13 @@ export const getLevels = async () => {
     const level = await axios.get('http://localhost:3000/api/levels/all/')
     return level.data
 }
+
+/* export const videosName = async () => {
+    
+    const video = await axios.get('http://localhost:3000/api/video/videoR/s{}')
+    return video.data
+} */
+
+
 
 

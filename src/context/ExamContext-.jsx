@@ -6,23 +6,23 @@ import { AuthContext } from "./AuthContext";
 
 export const ExamContext = createContext()
 
-export const ExamProvider = ({children}) => {
+export const ExamProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [examens, setExamens] = useState([])
     const [videos, setVideos] = useState([])
     const { user } = useContext(AuthContext)
 
- 
+
     const { data, isLoading, isError } = useQuery({
         queryKey: ['exams'],
         queryFn: examenes,
         enabled: pathname === '/examenes'
     });
-    
+
 
     useEffect(() => {
         if (data && user) {
-            const filte = data.filter((ex) => ex.level_id._id === user?.level_id._id )
+            const filte = data.filter((ex) => ex.level_id._id === user?.level_id._id)
             setExamens(filte)
 
         }
@@ -35,13 +35,17 @@ export const ExamProvider = ({children}) => {
         enabled: pathname === '/videos'
     });
 
-    useEffect(()=>{
-        setVideos(video)
-        console.log(video);
-    },[video])
-    
+    useEffect(() => {
+        if (video) {
+            console.log(video);
+            const videoFilter = video.filter((vd) => vd.user_id?._id === user?._id)
+            console.log(videoFilter);
+            setVideos(videoFilter)
+        }
+    }, [video])
+
     return (
-        <ExamContext.Provider value={{examens, videos}}>
+        <ExamContext.Provider value={{ examens, videos }}>
             {children}
         </ExamContext.Provider>
     )

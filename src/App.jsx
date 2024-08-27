@@ -8,9 +8,13 @@ import { RecordView } from "./components/RecordVideo";
 import { NotFound } from "./pages/NotFound";
 import { Nav } from "./components/Nav/Nav";
 import { Profile } from "./pages/Profile";
+
 import { DashM } from "./pagesM/DashM";
 import { Tablas } from "./pagesM/Tablas";
 import { CreationE } from "./pagesM/CreationE";
+
+import { Videos } from "./components/Videos";
+
 
 export default function App() {
   return (
@@ -23,7 +27,8 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/examenes" element={<Examns />}/>
-          <Route path="/videos" element={<RecordView />}/>
+          <Route path="/videos" element={<Videos />}/>
+          <Route path="/Recording" element={<RecordView />}/>
         </Route>
 
         <Route path="/exams/:id" element={<Exam/>}/>
