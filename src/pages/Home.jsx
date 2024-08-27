@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import fondo from "../public/lice.jpeg";
 //import { FaCalendarAlt, FaSignInAlt, FaGraduationCap, FaBook } from 'react-icons/fa';
 
 export const Home = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 bg-cover bg-center"
+    style={{ backgroundImage: `url(${fondo})` }}
+    >
       <div className="p-8 bg-white rounded shadow-md max-w-4xl w-full">
-        <h1 className="text-4xl font-bold mb-4 text-green-700 text-center">
+        <h1 className="text-4xl font-bold mb-4 text-sky-300 text-center">
           Welcome to the Student Portal
         </h1>
         <p className="mb-6 text-lg text-center">
@@ -19,7 +22,7 @@ export const Home = () => {
             {/* <FaCalendarAlt className="mr-2" /> View Dates
           </button> */}
           <Link to="/login">
-            <button className="flex items-center bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">
+            <button className="flex items-center bg-sky-300 text-white py-2 px-4 rounded hover:bg-sky-500 transition">
               {/*  <FaSignInAlt className="mr-2" /> */} LOGIN
             </button>
           </Link>

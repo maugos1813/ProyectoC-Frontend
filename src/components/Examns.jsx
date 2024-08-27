@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Data from './../examenCompleto.json'
 import { Link } from 'react-router-dom'
 import { ExamContext } from '../context/ExamContext-'
-import { AuthContext } from '../context/AuthContext'
 
 export const Examns = () => {
  
@@ -10,7 +8,7 @@ const {examens} = useContext(ExamContext)
 console.log(examens);
 
     return (
-        <main className=' w-full h-[90%] py-8 bg-[#baf1cf] '>
+        <main className=' w-full py-8 h-[100vh] bg-sky-100  rounded-3xl mt-3'>
             <h1 className='font-semibold text-[50px] text-center pb-4'>Examenes</h1>
             <Link to={'/dashboard'} className='text-[20px] text-center px-8'>{'<'} Volver al Panel</Link>
             <section className='grid - grid-cols-2 py-4 px-8 gap-8 w-full'>
@@ -24,7 +22,7 @@ console.log(examens);
                                 <span className=''>Nivel: {dato.level_id.name}</span>
                             </div>
                             <div className="w-full h-full flex justify-end items-center ">
-                                <Link to={`/exam/${dato._id}`} className='bg-[#0A8537] text-white font-semibold w-[8rem] h-[30%] rounded-3xl justify-center flex items-center hover:bg-[#1f6e3c]'>Access</Link> </div>
+                                <Link to={`/exam/${dato._id}`} className='bg-sky-400 text-white font-semibold w-[8rem] h-[30%] rounded-3xl justify-center flex items-center hover:bg-sky-500'>Access</Link> </div>
                         </section>
                     )
                     )
