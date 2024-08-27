@@ -35,6 +35,10 @@ export const AuthProvider = ({ children }) => {
     return (
         <AlumnsContext.Provider
             value={{
+
+
+                
+
                 user,
                 isLoading,
                 isError,

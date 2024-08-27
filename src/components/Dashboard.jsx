@@ -7,7 +7,7 @@ import bandera from "../public/bandera.jpeg";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
 
-  console.log(user);
+ // console.log(user);
   return (
     <div className=" min-h-screen">
       <div className="p-8">
