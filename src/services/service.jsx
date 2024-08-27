@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 
 export const UserById = async (id) => {
     const user = await axios.get('http://localhost:3000/api/users/66c524b725f1875626d8db6b')
@@ -25,6 +23,7 @@ export const infoUser = async () => {
     })
     return info.data
 }
+
 export const examenes = async () => {
     
     const examens = await axios.get('http://localhost:3000/api/exams')
@@ -37,11 +36,23 @@ export const videosAll = async () => {
     return video.data
 }
 
+
+export const getAll = async () => {
+    const response = await axios.get('http://localhost:3000/api/users/');
+    return response.data;
+};
+
+export const getLevels = async () => {
+    const level = await axios.get('http://localhost:3000/api/levels/all/')
+    return level.data
+}
+
 /* export const videosName = async () => {
     
     const video = await axios.get('http://localhost:3000/api/video/videoR/s{}')
     return video.data
 } */
+
 
 
 

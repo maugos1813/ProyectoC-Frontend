@@ -3,36 +3,35 @@ import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { infoUser, loginUser } from "../services/service";
 
-export const AuthContext = createContext();
+export const AuthContextM = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const rutasIgnoradas = ["/"];
 
-  const [user, setUser] = useState(null);
+  const [teacher, setTeacher] = useState(null);
 
   const loginMutation = useMutation({
     mutationKey: ["login"],
     mutationFn: loginUser,
-    onError: (data) => alert(data.message),
+    onError: (data) => alert(data.response.data.message),
     onSuccess: ({ data }) => {
-     
       localStorage.setItem("tokenLogin", data.token);
       localStorage.setItem("userId", data.user);
-      navigate("/dashboard");
+      navigate("/dashM");
     },
   });
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['user'],
     queryFn: infoUser ,
-    enabled: pathname === ('/dashboard')
+    enabled: pathname === ('/dashM')
     
 });
 
 useEffect(()=>{
-  setUser(data)    
+  setTeacher(data)    
   console.log("User data:", data)   
 },[data])
 
@@ -41,7 +40,8 @@ useEffect(()=>{
     <AuthContext.Provider
       value={{
         loginMutation,
-        user
+        teacher,
+        data
       }}
     >
         {children}
