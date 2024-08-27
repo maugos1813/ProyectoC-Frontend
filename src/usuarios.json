@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan.perez@example.com"
+  },
+  {
+    "id": 2,
+    "nombre": "Maria",
+    "apellido": "Gomez",
+    "email": "maria.gomez@example.com"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos",
+    "apellido": "Rodriguez",
+    "email": "carlos.rodriguez@example.com"
+  },
+  {
+    "id": 4,
+    "nombre": "Ana",
+    "apellido": "Martinez",
+    "email": "ana.martinez@example.com"
+  },
+  {
+    "id": 5,
+    "nombre": "Luis",
+    "apellido": "Lopez",
+    "email": "luis.lopez@example.com"
+  },
+  {
+    "id": 6,
+    "nombre": "Sofia",
+    "apellido": "Hernandez",
+    "email": "sofia.hernandez@example.com"
+  },
+  {
+    "id": 7,
+    "nombre": "Miguel",
+    "apellido": "Garcia",
+    "email": "miguel.garcia@example.com"
+  },
+  {
+    "id": 8,
+    "nombre": "Laura",
+    "apellido": "Fernandez",
+    "email": "laura.fernandez@example.com"
+  },
+  {
+    "id": 9,
+    "nombre": "David",
+    "apellido": "Sanchez",
+    "email": "david.sanchez@example.com"
+  },
+  {
+    "id": 10,
+    "nombre": "Elena",
+    "apellido": "Diaz",
+    "email": "elena.diaz@example.com"
+  },
+  {
+    "id": 11,
+    "nombre": "Andres",
+    "apellido": "Torres",
+    "email": "andres.torres@example.com"
+  },
+  {
+    "id": 12,
+    "nombre": "Isabel",
+    "apellido": "Ramirez",
+    "email": "isabel.ramirez@example.com"
+  },
+  {
+    "id": 13,
+    "nombre": "Ricardo",
+    "apellido": "Cruz",
+    "email": "ricardo.cruz@example.com"
+  },
+  {
+    "id": 14,
+    "nombre": "Valeria",
+    "apellido": "Morales",
+    "email": "valeria.morales@example.com"
+  },
+  {
+    "id": 15,
+    "nombre": "Fernando",
+    "apellido": "Ortiz",
+    "email": "fernando.ortiz@example.com"
+  },
+  {
+    "id": 16,
+    "nombre": "Patricia",
+    "apellido": "Gutierrez",
+    "email": "patricia.gutierrez@example.com"
+  },
+  {
+    "id": 17,
+    "nombre": "Javier",
+    "apellido": "Ramos",
+    "email": "javier.ramos@example.com"
+  },
+  {
+    "id": 18,
+    "nombre": "Camila",
+    "apellido": "Chavez",
+    "email": "camila.chavez@example.com"
+  },
+  {
+    "id": 19,
+    "nombre": "Sergio",
+    "apellido": "Ruiz",
+    "email": "sergio.ruiz@example.com"
+  },
+  {
+    "id": 20,
+    "nombre": "Natalia",
+    "apellido": "Mendoza",
+    "email": "natalia.mendoza@example.com"
+  }
+]

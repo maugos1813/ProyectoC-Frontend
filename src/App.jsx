@@ -9,6 +9,8 @@ import { NotFound } from "./pages/NotFound";
 import { Nav } from "./components/Nav/Nav";
 import { Profile } from "./pages/Profile";
 import { DashM } from "./pagesM/DashM";
+import { Tablas } from "./pagesM/Tablas";
+import { CreationE } from "./pagesM/CreationE";
 
 export default function App() {
   return (
@@ -28,6 +30,8 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route path="/dashM" element={<DashM/>}/>
+        <Route path="/tablas" element={<Tablas/>}/>
+        <Route path="/creation" element={<CreationE/>}/>
       </Routes>
     </div>
   );
