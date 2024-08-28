@@ -13,6 +13,7 @@ import { Tablas } from "./pagesM/Tablas";
 import { CreationE } from "./pagesM/CreationE";
 import { Videos } from "./components/Videos";
 import { Dashboard2 } from "./components/Dashboard2";
+import { EditExams } from "./pagesM/EditExams";
 
 
 export default function App() {
@@ -24,7 +25,6 @@ export default function App() {
 
         <Route element={<Nav />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard2" element={<Dashboard2 />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/examenes" element={<Examns />}/>
           <Route path="/videos" element={<Videos />}/>
@@ -34,9 +34,16 @@ export default function App() {
         <Route path="/exam/:id" element={<Exam/>}/>
         <Route path="*" element={<NotFound />} />
 
-      {/*   <Route path="/dashM" element={<NavM/>}/> */}
-        <Route path="/tablas" element={<Tablas/>}/>
-        <Route path="/creation" element={<CreationE/>}/>
+        <Route element={<NavM />}  >
+          <Route path="/dashboard2" element={<Dashboard2 />} />
+          <Route path="/editexams" element={<EditExams/>} />
+          <Route path="/tablas" element={<Tablas/>}/>
+          <Route path="/creation" element={<CreationE/>}/>
+        </Route>
+
+        {/* <Route path="/das" element={<NavM/>}/> */}
+        {/* <Route path="/tablas" element={<Tablas/>}/> */}
+        {/* <Route path="/creation" element={<CreationE/>}/> */}
       </Routes>
     </div>
   );
