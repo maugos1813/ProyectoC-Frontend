@@ -44,10 +44,16 @@ else if(data?.type === "teacher") {navigate('/dashboard2')}
   else { navigate('/')}
 },[data])
 
+function logoout() {
+  localStorage.removeItem("tokenLogin");
+  localStorage.removeItem("userId");
+  navigate('/')
+}
 
   return (
     <AuthContext.Provider
       value={{
+        logoout,
         loginMutation,
         user
       }}

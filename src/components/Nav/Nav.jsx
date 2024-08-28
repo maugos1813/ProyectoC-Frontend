@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import book from "./Icons/logo.jpeg";
+import { AuthContext } from "../../context/AuthContext";
 
 export const Nav = () => {
+  const {logoout} = useContext(AuthContext)
+
   return (
     <div className="">
       <div className="bg-sky-400 flex justify-between h-[10vh] items-center rounded-3xl mt-2">
@@ -21,6 +24,9 @@ export const Nav = () => {
             </li>
             <li className="hover:underline">
               <Link to="/videos">Videos</Link>
+            </li>
+            <li className="hover:underline">
+            <button onClick={logoout} className="text-white">Logout</button>
             </li>
           </ul>
         </nav>
