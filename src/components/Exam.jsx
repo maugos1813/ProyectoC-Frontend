@@ -91,13 +91,7 @@ export const Exam = () => {
                                         {
                                             <div className="flex flex-col gap-4">
                                                 <span className='font-semibold'>{q.statement}</span>
-
-                                                <Link to={'/Recording'} className='bg-sky-300  rounded-xl p-3 text-white text-center font-semibold'>Grabar video</Link>
-
-
-                                                {/*                                                 <Link to={'/Recording'} className='bg-[#0A8537]  rounded-xl p-3 text-white text-center font-semibold'>Grabar video</Link>
- */} <RecordView />
-
+                                               
                                             </div>
                                         }
 
@@ -105,7 +99,9 @@ export const Exam = () => {
 
                                 }
                             </div>))
+                            
                     }
+                    <RecordView/>
                     <button type='submit' className='bg-blue-500  rounded-xl p-3 text-white font-semibold'>Enviar Respuestas</button>
                 </form>
             </section>
