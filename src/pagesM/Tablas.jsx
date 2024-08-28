@@ -78,7 +78,7 @@ export const Tablas = () => {
         <div className="flex gap-4">
           <div className="flex justify-start mb-4">
             <Link
-              to="/dashM"
+              to={'/dashboard2'}
               className="text-white bg-sky-500 h-[6vh] border-[2px] px-4 py-2 rounded-2xl hover:bg-sky-700 font-semibold flex items-center"
             >
               Volver

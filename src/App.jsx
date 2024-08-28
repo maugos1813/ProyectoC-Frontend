@@ -34,7 +34,7 @@ export default function App() {
         <Route path="/exam/:id" element={<Exam/>}/>
         <Route path="*" element={<NotFound />} />
 
-        <Route path="/dashM" element={<NavM/>}/>
+      {/*   <Route path="/dashM" element={<NavM/>}/> */}
         <Route path="/tablas" element={<Tablas/>}/>
         <Route path="/creation" element={<CreationE/>}/>
       </Routes>

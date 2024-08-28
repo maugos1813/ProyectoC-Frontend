@@ -23,10 +23,9 @@ export const AuthProvider = ({ children }) => {
     // });
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['user'],
+        queryKey: ['users'],
         queryFn: getAll,
-        enabled: pathname === '/tablas'
-    });
+ enabled: Boolean(localStorage.getItem("userId"))    });
 
     useEffect(() => {
         setUser(data);        
