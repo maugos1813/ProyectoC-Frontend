@@ -1,16 +1,19 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 //import exams from './../examenCompleto.json'
 import { Link, useParams } from 'react-router-dom';
 
 import fondo from "../public/lice.jpeg";
 
 import { RecordView } from './RecordVideo';
+import { ExamContext } from '../context/ExamContext-';
+import { AuthContext } from '../context/AuthContext';
 
 
 export const Exam = () => {
     const { id } = useParams()
     const [exam, setExam] = useState({})
+    const { newVideo, sendExam } = useContext(ExamContext)
 
     useEffect(() => {
         const examen = async () => {
@@ -18,17 +21,33 @@ export const Exam = () => {
             const examens = await axios.get(`http://localhost:3000/api/exams/${id}`)
 
             setExam(examens.data)
-
+            console.log(examens.data);
         }
         examen()
     }, [id])
 
-    console.log(exam);
-
-    function formRpta(e) {
+    async function formRpta(e) {
         e.preventDefault()
+        const answer = []
+        exam.questions.forEach(p => {
+            const inputs = e.target[p._id]
 
-        const formData = new FormData(e.target);
+            answer.push({
+                question_id: p._id,
+                question_type: p.type,
+                answer: p.type === 'video' ? 'null' : inputs.value
+
+            })
+
+        })
+        const formData = new FormData();
+        formData.append('student_id', exam.user_id)
+        formData.append('exam_id', id)
+        formData.append('answers', JSON.stringify(answer))
+        formData.append('video', newVideo, `video de ${id}.mp4`)
+
+        await sendExam.mutateAsync(formData)
+
         const dataAns = {};
 
         formData.forEach((value, key) => {
@@ -42,15 +61,15 @@ export const Exam = () => {
 
 
     return (
-        <main className='w-full h-full flex flex-col p-8 gap-8 border-[1px] bg-[#baf1cf] bg-cover bg-center'
-        style={{ backgroundImage: `url(${fondo})` }}
+        <main className='w-full h-full flex flex-col p-8 gap-8 border-[1px] bg-sky-400  bg-cover bg-center'
+            style={{ backgroundImage: `url(${fondo})` }}
         >
-            <section className='w-full  flex flex-col gap-8 ' >
+            <section className='w-full h-full flex flex-col gap-8 ' >
                 <h1 className='font-semibold text-center text-[2.5rem]'>{exam?.name}</h1>
                 {/*  <h3 className='font-semibold text-center text-[1.5rem]'>Prof. {exam.autor}</h3> */}
                 <Link className='text-[1.2rem]' to={'/examenes'}>{'<'}Volver a Examenes</Link>
 
-                <form onSubmit={formRpta} className='w-full flex flex-col gap-4 bg-white rounded-2xl p-8'>
+                <form onSubmit={formRpta} className='w-full h-full flex flex-col gap-4 bg-white rounded-2xl p-8'>
                     <h2 className='font-semibold text-[1.5rem]'>PREGUNTAS</h2>
                     {(exam) &&
                         exam.questions?.map((q, index) => (
@@ -76,8 +95,10 @@ export const Exam = () => {
 
                                         {
                                             <div className="flex flex-col gap-4">
-                                                <span className='font-semibold'>{q.statement}</span>
-                                                <textarea name={q._id} id="respuesta" cols="20" rows="5" placeholder='Respuesta' className=' outline-1 outline-[#0A8537] rounded-xl p-4 bg-[#def5e6]'></textarea>
+
+                                                <label htmlFor='open' className='font-semibold'>{q.statement}</label>
+                                                <input id='open' name={q._id} placeholder='Respuesta' className=' outline-1 outline-sky-400 rounded-xl p-4 bg-[#D9ECFD] ' />
+
                                             </div>
                                         }
                                     </div>
@@ -91,7 +112,7 @@ export const Exam = () => {
                                         {
                                             <div className="flex flex-col gap-4">
                                                 <span className='font-semibold'>{q.statement}</span>
-                                               
+
                                             </div>
                                         }
 
@@ -99,10 +120,11 @@ export const Exam = () => {
 
                                 }
                             </div>))
-                            
+
                     }
-                    <RecordView/>
-                    <button type='submit' className='bg-blue-500  rounded-xl p-3 text-white font-semibold'>Enviar Respuestas</button>
+                    <RecordView />
+
+                    <button type='submit' className='bg-sky-400 rounded-xl p-3 text-white font-semibold'>Enviar Respuestas</button>
                 </form>
             </section>
 

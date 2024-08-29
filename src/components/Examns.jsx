@@ -3,17 +3,25 @@ import { Link } from 'react-router-dom'
 import { ExamContext } from '../context/ExamContext-'
 
 export const Examns = () => {
- 
+ const [exam,setExam] = useState([])
 const {examens} = useContext(ExamContext)
-console.log(examens);
+
+useEffect(()=>{
+    const userId = localStorage.getItem('userId')
+ const filterExams = examens?.filter((ex)=> ex.user_id._id === userId )   
+ setExam(filterExams);
+},[examens])
+
+
+console.log(exam);
 
     return (
-        <main className=' w-full py-8 h-[100vh] bg-sky-100  rounded-3xl mt-3'>
+        <main className=' w-full h-full py-8 bg-sky-100  rounded-3xl mt-3'>
             <h1 className='font-semibold text-[50px] text-center pb-4'>Examenes</h1>
             <Link to={'/dashboard'} className='text-[20px] text-center px-8'>{'<'} Volver al Panel</Link>
             <section className='grid - grid-cols-2 py-4 px-8 gap-8 w-full'>
-                {examens &&
-                    examens.map((dato, index) =>
+                {exam &&
+                    exam.map((dato, index) =>
 
                     (
                         <section key={index} className='flex flex-row bg-[#F4F4F5] shadow-xl items-center justify-between rounded-2xl p-4 gap-4'>

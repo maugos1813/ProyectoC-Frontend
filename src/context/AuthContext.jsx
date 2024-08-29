@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
     onSuccess: ({ data }) => {
       localStorage.setItem("tokenLogin", data.token);
       localStorage.setItem("userId", data.user);
+      navigate('/dashboard')
     },
   });
 

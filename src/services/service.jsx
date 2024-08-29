@@ -30,10 +30,10 @@ export const examenes = async () => {
     return examens.data
 }
 
-export const videosAll = async () => {
-    
-    const video = await axios.get('http://localhost:3000/api/video')
-    return video.data
+export const resultsAll = async () => {
+    const userId = localStorage.getItem('userId')
+    const result = await axios.get(`http://localhost:3000/api/results/students/${userId}`)
+    return result.data
 }
 
 
@@ -47,11 +47,11 @@ export const getLevels = async () => {
     return level.data
 }
 
-/* export const videosName = async () => {
+export const sendExamn = async (data) => {
     
-    const video = await axios.get('http://localhost:3000/api/video/videoR/s{}')
+    const video = await axios.post('http://localhost:3000/api/results/',data)
     return video.data
-} */
+}
 
 
 

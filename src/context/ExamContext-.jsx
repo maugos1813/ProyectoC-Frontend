@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { examenes, videosAll } from "../services/service";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { examenes,  resultsAll,  sendExamn } from "../services/service";
 import { createContext, useContext, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
@@ -9,8 +9,10 @@ export const ExamContext = createContext()
 export const ExamProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [examens, setExamens] = useState([])
-    const [videos, setVideos] = useState([])
+    const [result, setResult] = useState([])
     const { user } = useContext(AuthContext)
+    const [newVideo, setNewVideo] = useState('')
+
 
 
     const { data, isLoading, isError } = useQuery({
@@ -29,23 +31,38 @@ export const ExamProvider = ({ children }) => {
     }, [data, user])
 
 
-    const { data: video, isLoading: videoLoading, isError: videoErr } = useQuery({
-        queryKey: ['video'],
-        queryFn: videosAll,
+    const { data: results, isLoading: videoLoading, isError: videoErr } = useQuery({
+        queryKey: ['results'],
+        queryFn: resultsAll,
         enabled: pathname === '/videos'
     });
 
     useEffect(() => {
-        if (video) {
-            console.log(video);
-            const videoFilter = video.filter((vd) => vd.user_id?._id === user?._id)
-            console.log(videoFilter);
-            setVideos(videoFilter)
+        if (results) {
+         //   console.log(results);
+            const resultsFilter = results.filter((vd) => vd?.student_id === user?._id)
+            console.log(resultsFilter);
+            setResult(resultsFilter)
         }
-    }, [video])
+    }, [results])
+
+
+    const sendExam = useMutation({
+        mutationKey: ['send'],
+        mutationFn: sendExamn,
+        onSuccess: (res) => {
+            alert('examen enviado')
+            console.log(res);
+        },
+        onError: (res) => {
+            alert('no se pudo entregar')
+            console.log(res);
+        }
+    })
+
 
     return (
-        <ExamContext.Provider value={{ examens, videos }}>
+        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo,sendExam }}>
             {children}
         </ExamContext.Provider>
     )
