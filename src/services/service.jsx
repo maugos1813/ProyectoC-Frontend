@@ -30,17 +30,18 @@ export const examenes = async () => {
     return examens.data
 }
 
-export const resultsAll = async () => {
-    const userId = localStorage.getItem('userId')
+export const resultsAll = async (userId) => {
+   // const userId = localStorage.getItem('userId')
+   console.log(userId);
     const result = await axios.get(`http://localhost:3000/api/results/students/${userId}`)
+    console.log(result.data);
     return result.data
 }
-
 
 export const getAll = async () => {
     const response = await axios.get('http://localhost:3000/api/users/');
     return response.data;
-};
+}
 
 export const getLevels = async () => {
     const level = await axios.get('http://localhost:3000/api/levels/all/')

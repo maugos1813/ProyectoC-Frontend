@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { infoUser, loginUser } from "../services/service";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -22,34 +22,31 @@ export const AuthProvider = ({ children }) => {
     },
   });
 
-/*   useEffect(()=>{
-    const { data:user , isLoading, isError } = useQuery({
-      queryKey: ['user'],
-      queryFn: infoUser })
-
-      console.log(user);
-  },[data])
-   */
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['user'],
-    queryFn: infoUser ,
+    queryFn: infoUser,
     enabled: Boolean(localStorage.getItem("userId"))
-});
+  });
 
-useEffect(()=>{
-setUser(data) 
+  useEffect(() => {
+    setUser(data)
+    const hasNavigated = localStorage.getItem('hasNavigated');
+    if (!hasNavigated) {
+      if (data?.type === "student") { navigate('/dashboard') }
+      else if (data?.type === "teacher") { navigate('/dashboard2') }
+      else { navigate('/') }
+      localStorage.setItem('hasNavigated', 'true')
+    }
 
-if(data?.type === "student") {navigate('/dashboard')}
-else if(data?.type === "teacher") {navigate('/dashboard2')}
-  else { navigate('/')}
-},[data])
+  }, [data])
 
-function logoout() {
-  localStorage.removeItem("tokenLogin");
-  localStorage.removeItem("userId");
-  navigate('/')
-}
+  function logoout() {
+    localStorage.removeItem("tokenLogin");
+    localStorage.removeItem("userId");
+    localStorage.removeItem('hasNavigated')
+    navigate('/')
+  }
 
   return (
     <AuthContext.Provider
@@ -59,7 +56,7 @@ function logoout() {
         user
       }}
     >
-        {children}
+      {children}
     </AuthContext.Provider>
   );
-};
+}

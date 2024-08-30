@@ -25,10 +25,11 @@ export const AuthProvider = ({ children }) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['users'],
         queryFn: getAll,
- enabled: Boolean(localStorage.getItem("userId"))    });
+        enabled: Boolean(localStorage.getItem("userId"))
+    });
 
     useEffect(() => {
-        setUser(data);        
+        setUser(data);
     }, [data]);
 
     return (
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }) => {
             value={{
 
 
-                
+
 
                 user,
                 isLoading,

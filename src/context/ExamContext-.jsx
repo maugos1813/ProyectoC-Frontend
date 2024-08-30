@@ -1,24 +1,24 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { examenes,  resultsAll,  sendExamn } from "../services/service";
+import { examenes, resultsAll, sendExamn } from "../services/service";
 import { createContext, useContext, useEffect, useState } from "react"
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
 export const ExamContext = createContext()
 
 export const ExamProvider = ({ children }) => {
-    const { pathname } = useLocation()
+    const navigate = useNavigate();
     const [examens, setExamens] = useState([])
     const [result, setResult] = useState([])
     const { user } = useContext(AuthContext)
     const [newVideo, setNewVideo] = useState('')
 
-
+    const userId = localStorage.getItem('userId')
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ['exams'],
         queryFn: examenes,
-        enabled: pathname === '/examenes'
+        enabled: Boolean(localStorage.getItem("userId"))
     });
 
 
@@ -33,17 +33,17 @@ export const ExamProvider = ({ children }) => {
 
     const { data: results, isLoading: videoLoading, isError: videoErr } = useQuery({
         queryKey: ['results'],
-        queryFn: resultsAll,
-        enabled: pathname === '/videos'
+        queryFn: () => resultsAll(userId),
+        enabled: Boolean(localStorage.getItem("userId"))
     });
 
     useEffect(() => {
-        if (results) {
-         //   console.log(results);
-            const resultsFilter = results.filter((vd) => vd?.student_id === user?._id)
-            console.log(resultsFilter);
-            setResult(resultsFilter)
-        }
+
+        const answer = results?.flatMap((rs) => {
+            return rs.answers?.filter((as) => as.question_type === 'video')
+        })
+        setResult(answer)
+
     }, [results])
 
 
@@ -52,6 +52,7 @@ export const ExamProvider = ({ children }) => {
         mutationFn: sendExamn,
         onSuccess: (res) => {
             alert('examen enviado')
+            navigate('/examenes')
             console.log(res);
         },
         onError: (res) => {
@@ -62,7 +63,7 @@ export const ExamProvider = ({ children }) => {
 
 
     return (
-        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo,sendExam }}>
+        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam }}>
             {children}
         </ExamContext.Provider>
     )

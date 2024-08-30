@@ -40,8 +40,10 @@ export const Exam = () => {
             })
 
         })
+
+        const userId = localStorage.getItem('userId')
         const formData = new FormData();
-        formData.append('student_id', exam.user_id)
+        formData.append('student_id', userId)
         formData.append('exam_id', id)
         formData.append('answers', JSON.stringify(answer))
         formData.append('video', newVideo, `video de ${id}.mp4`)

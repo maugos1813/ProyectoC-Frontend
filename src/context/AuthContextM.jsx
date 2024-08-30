@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+/* import { useMutation, useQuery } from "@tanstack/react-query";
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { infoUser, loginUser } from "../services/service";
@@ -48,3 +48,4 @@ useEffect(()=>{
     </AuthContext.Provider>
   );
 };
+ */
