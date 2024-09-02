@@ -4,14 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const Videos = () => {
     const { result } = useContext(ExamContext)
-    
-    useEffect(() => {
-        console.log(result);
-
-      /*   setVideo(answer);
-        console.log(answer); */
-    }, [result])
-
+  
     return (
         <main className=' w-full h-full py-8 bg-sky-100 '>
             <h1 className='font-semibold text-[50px] text-center pb-4'>MIS VIDEOS</h1>

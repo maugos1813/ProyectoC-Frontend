@@ -8,11 +8,13 @@ export const ExamContext = createContext()
 
 export const ExamProvider = ({ children }) => {
     const navigate = useNavigate();
+    const { pathname } = useLocation();
+
     const [examens, setExamens] = useState([])
     const [result, setResult] = useState([])
     const [score, setScore] = useState([])
     const { user } = useContext(AuthContext)
-    const [newVideo, setNewVideo] = useState('')
+    const [newVideo, setNewVideo] = useState([])
 
     const userId = localStorage.getItem('userId')
 
@@ -26,16 +28,16 @@ export const ExamProvider = ({ children }) => {
     useEffect(() => {
         if (data && user) {
             const filte = data.filter((ex) => ex.level_id._id === user?.level_id._id)
-            setExamens(filte)
-
+            setExamens(filte) 
         }
     }, [data, user])
+
 
 
     const { data: results, isLoading: videoLoading, isError: videoErr } = useQuery({
         queryKey: ['results'],
         queryFn: () => resultsAll(userId),
-        enabled: Boolean(localStorage.getItem("userId"))
+        enabled: Boolean(localStorage.getItem("userId") && pathname === '/videos') ,
     });
 
     useEffect(() => {
@@ -54,17 +56,15 @@ export const ExamProvider = ({ children }) => {
         onSuccess: (res) => {
             alert('examen enviado')
             navigate('/examenes')
-            console.log(res);
         },
         onError: (res) => {
             alert('no se pudo entregar')
-            console.log(res);
         }
     })
 
 
     return (
-        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam,score }}>
+        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam,data, score }}>
             {children}
         </ExamContext.Provider>
     )

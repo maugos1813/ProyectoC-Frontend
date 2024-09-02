@@ -21,7 +21,6 @@ export const Exam = () => {
             const examens = await axios.get(`http://localhost:3000/api/exams/${id}`)
 
             setExam(examens.data)
-            console.log(examens.data);
         }
         examen()
     }, [id])
@@ -49,14 +48,14 @@ export const Exam = () => {
         formData.append('video', newVideo, `video de ${id}.mp4`)
 
         await sendExam.mutateAsync(formData)
-
+/* 
         const dataAns = {};
 
         formData.forEach((value, key) => {
             dataAns[key] = value
         })
 
-        console.log(dataAns);
+        console.log(dataAns); */
 
     }
 

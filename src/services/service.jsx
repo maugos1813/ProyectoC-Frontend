@@ -31,11 +31,13 @@ export const examenes = async () => {
 }
 
 export const resultsAll = async (userId) => {
-   // const userId = localStorage.getItem('userId')
-   console.log(userId);
-    const result = await axios.get(`http://localhost:3000/api/results/students/${userId}`)
-    console.log(result.data);
-    return result.data
+    try {
+        const result = await axios.get(`http://localhost:3000/api/results/students/${userId}`)
+        return result.data
+    } catch (error) {
+        console.log(error.response.data.message);
+    }
+   
 }
 
 export const getAll = async () => {

@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     onSuccess: ({ data }) => {
       localStorage.setItem("tokenLogin", data.token);
       localStorage.setItem("userId", data.user);
-      navigate('/dashboard')
+      navigate('/redict')
     },
   });
 
@@ -32,10 +32,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     setUser(data)
     const hasNavigated = localStorage.getItem('hasNavigated');
-    if (!hasNavigated) {
-      if (data?.type === "student") { navigate('/dashboard') }
-      else if (data?.type === "teacher") { navigate('/dashboard2') }
-      else { navigate('/') }
+    if (!hasNavigated && data) {
+      if (data.type === "student") {  window.location.href = '/dashboard'}
+      else if (data.type === "teacher") {  window.location.href = '/dashboard2' }
+      else { window.location.href = '/'}
       localStorage.setItem('hasNavigated', 'true')
     }
 
