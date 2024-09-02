@@ -1,22 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
-import { examenes, videosAll } from "../services/service";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { examenes, resultsAll, sendExamn } from "../services/service";
 import { createContext, useContext, useEffect, useState } from "react"
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 
 export const ExamContext = createContext()
 
 export const ExamProvider = ({ children }) => {
-    const { pathname } = useLocation()
+    const navigate = useNavigate();
     const [examens, setExamens] = useState([])
-    const [videos, setVideos] = useState([])
+    const [result, setResult] = useState([])
+    const [score, setScore] = useState([])
     const { user } = useContext(AuthContext)
+    const [newVideo, setNewVideo] = useState('')
 
+    const userId = localStorage.getItem('userId')
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ['exams'],
         queryFn: examenes,
-        enabled: pathname === '/examenes'
+        enabled: Boolean(localStorage.getItem("userId"))
     });
 
 
@@ -29,23 +32,39 @@ export const ExamProvider = ({ children }) => {
     }, [data, user])
 
 
-    const { data: video, isLoading: videoLoading, isError: videoErr } = useQuery({
-        queryKey: ['video'],
-        queryFn: videosAll,
-        enabled: pathname === '/videos'
+    const { data: results, isLoading: videoLoading, isError: videoErr } = useQuery({
+        queryKey: ['results'],
+        queryFn: () => resultsAll(userId),
+        enabled: Boolean(localStorage.getItem("userId"))
     });
 
     useEffect(() => {
-        if (video) {
-            console.log(video);
-            const videoFilter = video.filter((vd) => vd.user_id?._id === user?._id)
-            console.log(videoFilter);
-            setVideos(videoFilter)
+        setScore(results)
+        const answer = results?.flatMap((rs) => {
+            return rs.answers?.filter((as) => as.question_type === 'video')
+        })
+        setResult(answer)
+
+    }, [results])
+
+
+    const sendExam = useMutation({
+        mutationKey: ['send'],
+        mutationFn: sendExamn,
+        onSuccess: (res) => {
+            alert('examen enviado')
+            navigate('/examenes')
+            console.log(res);
+        },
+        onError: (res) => {
+            alert('no se pudo entregar')
+            console.log(res);
         }
-    }, [video])
+    })
+
 
     return (
-        <ExamContext.Provider value={{ examens, videos }}>
+        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam,score }}>
             {children}
         </ExamContext.Provider>
     )

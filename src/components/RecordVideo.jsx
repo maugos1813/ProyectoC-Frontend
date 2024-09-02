@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
 import { Link } from "react-router-dom";
+import { ExamContext } from "../context/ExamContext-";
 
 export const RecordView = () => {
-
+    const {setNewVideo} = useContext(ExamContext)
     const VideoPreview = ({ stream }) => {
         const videoRef = useRef(null);
     
-        const [newVideo, setNewVideo] = useState('')
     
         useEffect(() => {
     
@@ -23,58 +23,39 @@ export const RecordView = () => {
         return <video className="rounded-2xl " ref={videoRef} width={400} height={400} autoPlay />;
     }
 
-    async function saveVideo(e) {
-        const videito = await fetch(e.target.value)
-        const newvideo = await videito.blob()
-
-        const videoName = `${new Date().toISOString()}.mp4`;  // Puedes ajustar este nombre según lo que necesites
-
-        // Crear un archivo a partir del Blob y asignarle un nombre
-        const videoFile = new File([newvideo], videoName, { type: 'video/mp4' });
-
-        console.log(videoFile)
-    }
-    
-
+  
     return (
-        <div className=" w-full  h-screen flex flex-col bg-[#def5e6] ">
+        <div className=" w-full  h-full flex flex-col bg-[#D9ECFD] ">
             <ReactMediaRecorder
                 video
                 render={({ startRecording, previewStream, pauseRecording, resumeRecording, stopRecording, mediaBlobUrl, clearBlobUrl }) => {
+
+                    useEffect(()=>{
+                        async function saveVideo() {
+                            const videito = await fetch(mediaBlobUrl)
+                            const newvideo = await videito.blob()
+                            setNewVideo(newvideo)
+                        }
+                        saveVideo()
+                    },[mediaBlobUrl])
+                   
+
                     return (
-                        <section className="flex flex-col w-[70%] h-fit m-auto items-center border-[1px] border-[#0A8537] p-8 rounded-2xl bg-white ">
-                            <Link className="mr-auto" >{'<'}Volver al Examen</Link>
+                        <section className="flex flex-col w-[70%] h-fit m-auto items-center border-[1px] border-sky-400 gap-4 p-8 rounded-2xl bg-white overflow-x-auto ">
                             <h1 className="text-[2rem] font-semibold ">Graba tu video aqui:</h1>
-                            <section>
-                                <section className="flex flex-col gap-8 py-8">
-                                    <section className="border-[1px] border-[#0A8537] flex gap-2 outline-none rounded-2xl px-4 py-2 ">
-                                        <label htmlFor="titulo">Titulo: </label> <input className="w-[80%] outline-none focus:bg-[#ecfaf1]  " id='titulo' name="titulo" type="text" placeholder="Ingresa el titulo de tu video" />
-                                    </section>
-                                    <section className="border-[1px] border-[#0A8537] flex gap-2 outline-none rounded-2xl px-4 py-2 ">
-                                        <label htmlFor="usuario">Usuario: </label>  <input className="w-[80%] outline-none focus:bg-[#ecfaf1]" id='usuario' name="usuario" type="text" placeholder="Ingresa tu nombre de usuario" />
-                                    </section>
-                                </section>
+                            <section className="flex flex-col gap-8 items-center">
+                             
+                                <div className="flex flex-row gap-8 py-4 w-full items-center justify-evenly bg-[#D9ECFD] px-2 rounded-2xl" >
+                                    <button type="button" className="bg-[#9ECEFF] hover:bg-[#38BDF8] text-white p-3 rounded-2xl" onClick={startRecording}>Iniciar Grabacion</button>
+                                    <button type="button" className="bg-[#9ECEFF] hover:bg-[#38BDF8] text-white p-2 rounded-2xl" onClick={pauseRecording}>Pausar</button>
+                                    <button type="button" className="bg-[#9ECEFF] hover:bg-[#38BDF8] text-white p-2 rounded-2xl" onClick={resumeRecording}>Reanudar</button>
+                                    <button type="button" className="bg-[#9ECEFF] hover:bg-[#38BDF8] text-white p-2 rounded-2xl" onClick={stopRecording}>Detener</button>
+                                    <button type="button" className="bg-[#9ECEFF] hover:bg-[#38BDF8] text-white p-2 rounded-2xl" onClick={clearBlobUrl}>Volver a intentar</button>
+                                </div>
+                                
                                 {!mediaBlobUrl ?
-                                    <VideoPreview stream={previewStream} />
-                                    : <video className="rounded-2xl " src={mediaBlobUrl} controls loop width={400} height={400} />}
-
-
-                                <div className="flex flex-row gap-8 py-4 w-full items-center justify-evenly bg-[#baf1cf] px-2 rounded-t-2xl" >
-                                    <button className="bg-[#0A8537] hover:bg-[#0A8537] text-white p-3 rounded-2xl" onClick={startRecording}>Iniciar Grabacion</button>
-                                    <button className="bg-[#0A8537] text-white p-2 rounded-2xl" onClick={pauseRecording}>Pausar</button>
-                                    <button className="bg-[#0A8537] text-white p-2 rounded-2xl" onClick={resumeRecording}>Reanudar</button>
-                                    <button className="bg-[#0A8537] text-white p-2 rounded-2xl" onClick={stopRecording}>Detener</button>
-                                    <button className="bg-[#0A8537] text-white p-2 rounded-2xl" onClick={clearBlobUrl}>Volver a intentar</button>
-                                </div>
-                                <div className="flex  w-full justify-center bg-[#baf1cf] rounded-b-2xl py-4 gap-8">
-                                    <button className="bg-[#0A8537] text-white w-[20%] p-2 rounded-2xl flex items-center justify-center cursor-pointer"
-                                        onClick={saveVideo}
-                                        value={mediaBlobUrl}
-                                    /* href={mediaBlobUrl} */
-                                    /* download={`${new Date}.mp4`} */>
-                                        Guardar Video
-                                    </button>
-                                </div>
+                                    <VideoPreview className='rounded-2xl ' stream={previewStream} />
+                                    : <video className="rounded-2xl  " src={mediaBlobUrl} controls loop width={400} height={400} />}
 
                             </section>
                         </section>)

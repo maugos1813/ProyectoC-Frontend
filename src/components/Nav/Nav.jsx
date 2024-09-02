@@ -26,6 +26,9 @@ export const Nav = () => {
               <Link to="/videos">Videos</Link>
             </li>
             <li className="hover:underline">
+              <Link to="/calificaciones">Calificaciones</Link>
+            </li>
+            <li className="hover:underline">
             <button onClick={logoout} className="text-white">Logout</button>
             </li>
           </ul>
