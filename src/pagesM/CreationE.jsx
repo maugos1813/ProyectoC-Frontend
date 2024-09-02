@@ -66,7 +66,6 @@ export const CreationE = () => {
     const handleSubmit = () => {
       const examData = {
         title,
-        description,
         questions
       }
       console.log(examData)//// mostrar datos
@@ -185,13 +184,15 @@ export const CreationE = () => {
             onChange={handleQuestionChange}
           />
         </div>
-  
+        <div className=' w-full flex justify-center'>
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
           onClick={handleAddQuestion}
         >
           Add Question
         </button>
+        </div>
+        
   
         <div className="mt-6">
           <h3 className="text-xl font-bold mb-2">Questions List:</h3>
@@ -214,13 +215,15 @@ export const CreationE = () => {
             </tbody>
           </table>
         </div>
-  
+        <div className='w-full flex justify-center'>
         <button
           className="bg-green-500 text-white px-4 py-2 rounded-md mt-6"
           onClick={handleSubmit}
         >
           Submit Exam
         </button>
+        </div>
+        
       </div>
     )
 }
