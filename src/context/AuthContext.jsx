@@ -45,6 +45,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("tokenLogin");
     localStorage.removeItem("userId");
     localStorage.removeItem('hasNavigated')
+    localStorage.removeItem('ParEx')
     navigate('/')
   }
 

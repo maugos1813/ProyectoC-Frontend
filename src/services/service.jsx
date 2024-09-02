@@ -56,6 +56,13 @@ export const sendExamn = async (data) => {
     return video.data
 }
 
+export const upExamn = async (data) => {
+    const pId = localStorage.getItem('ParEx')
+
+    const exam = await axios.patch(`http://localhost:3000/api/exams/${pId}`,data)
+    return exam.data
+}
+
 
 
 

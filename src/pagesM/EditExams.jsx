@@ -1,13 +1,19 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { ExamContext } from "../context/ExamContext-"
+import { AuthContext } from "../context/AuthContext"
 
 
 export const EditExams = () => {
-  const { id } = useParams() 
+  const { id } = useParams()
   const { data } = useContext(ExamContext)
-  console.log(data)
+  const { updExam } = useContext(ExamContext)
+  const { user } = useContext(AuthContext);
+  //const { userId } = localStorage.getItem('userId')
+
   const [title, setTitle] = useState('')
+  const [level, setLevel] = useState('')
+  const [userId, setuserId] = useState('')
 
   const [questions, setQuestions] = useState([])
   const [currentQuestion, setCurrentQuestion] = useState({
@@ -22,11 +28,15 @@ export const EditExams = () => {
 
 
   useEffect(() => {
+    localStorage.setItem('ParEx',id)
     const exam = data.find(exam => exam._id === id)
-    console.log(exam)
+    // const lvl = data.find(ex => exam._id === id)
+   // console.log(exam)
     if (exam) {
       setTitle(exam.name)
+      setLevel(exam.level_id._id)
       setQuestions(exam.questions)
+      setuserId(user?._id)
     }
   }, [data, id])
 
@@ -58,7 +68,7 @@ export const EditExams = () => {
   }
 
   const handleOptionChange = (index, value) => {
-    const newOptions = currentQuestion.options.map((option, i) => 
+    const newOptions = currentQuestion.options.map((option, i) =>
       i === index ? value : option
     )
     setCurrentQuestion({
@@ -100,14 +110,19 @@ export const EditExams = () => {
 
 
   //////////////////////////////////////////////////////////////////////
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const updatedExamData = {
       title,
+      user_id: userId,
+      level_id: level,
       questions
     }
-    console.log(updatedExamData) 
+    await updExam.mutateAsync(updatedExamData);
+
+    console.log(updatedExamData)
   }
-////////////////////////////////////////////////////////////////
+  
+  ////////////////////////////////////////////////////////////////
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg flex flex-col ">
       <h2 className="text-2xl font-bold mb-4">Edit Exam</h2>
@@ -122,7 +137,7 @@ export const EditExams = () => {
         />
       </div>
 
-     
+
       <label className="block text-sm font-medium text-gray-700">Question Type:</label>
       <select
         value={questionType}

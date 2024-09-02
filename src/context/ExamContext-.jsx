@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { examenes, resultsAll, sendExamn } from "../services/service";
+import { examenes, resultsAll, sendExamn, upExamn } from "../services/service";
 import { createContext, useContext, useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
@@ -61,10 +61,21 @@ export const ExamProvider = ({ children }) => {
             alert('no se pudo entregar')
         }
     })
+    const updExam = useMutation({
+        mutationKey: ['update'],
+        mutationFn: upExamn,
+        onSuccess: (res) => {
+            alert('examen actualizado')
+            navigate('/courses')
+        },
+        onError: (res) => {
+            alert('no se pudo actualizar')
+        }
+    })
 
 
     return (
-        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam,data, score }}>
+        <ExamContext.Provider value={{ examens, result,updExam, newVideo, setNewVideo, sendExam,data, score }}>
             {children}
         </ExamContext.Provider>
     )
