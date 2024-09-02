@@ -1,0 +1,56 @@
+[
+    {
+        "titulo": "Encuesta de Satisfacción",
+        "fecha": "2024-08-19",
+        "preguntas": [
+            "¿Cómo calificaría su experiencia general?",
+            "¿Recomendaría nuestros servicios a otros?",
+            "¿Cómo podemos mejorar?"
+        ]
+    },
+    {
+        "titulo": "Opinión sobre el Producto",
+        "fecha": "2024-08-18",
+        "preguntas": [
+            "¿Qué características le gustaría ver en futuras versiones?",
+            "¿El producto cumple con sus expectativas?",
+            "¿Cuál es su opinión sobre el diseño?"
+        ]
+    },
+    {
+        "titulo": "Encuesta de Uso de la Aplicación",
+        "fecha": "2024-08-17",
+        "preguntas": [
+            "¿Con qué frecuencia utiliza la aplicación?",
+            "¿La aplicación es fácil de usar?",
+            "¿Ha experimentado algún error?"
+        ]
+    },
+    {
+        "titulo": "Encuesta de Satisfacción del Cliente",
+        "fecha": "2024-08-16",
+        "preguntas": [
+            "¿Cómo describiría nuestro servicio al cliente?",
+            "¿Cómo podemos servirle mejor?",
+            "¿Volvería a utilizar nuestros servicios?"
+        ]
+    },
+    {
+        "titulo": "Preferencias de Productos",
+        "fecha": "2024-08-15",
+        "preguntas": [
+            "¿Qué tipo de productos prefiere?",
+            "¿Qué tan satisfecho está con la variedad?",
+            "¿Qué otros productos le gustaría que ofrezcamos?"
+        ]
+    },
+    {
+        "titulo": "Encuesta de Calidad",
+        "fecha": "2024-08-14",
+        "preguntas": [
+            "¿El producto cumple con los estándares de calidad?",
+            "¿Qué cambios recomendaría?",
+            "¿El precio del producto es adecuado?"
+        ]
+    }
+]
