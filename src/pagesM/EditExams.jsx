@@ -6,7 +6,6 @@ import { AuthContext } from "../context/AuthContext"
 
 export const EditExams = () => {
   const { id } = useParams()
-  const { id } = useParams()
   const { data } = useContext(ExamContext)
   const { updExam } = useContext(ExamContext)
   const { user } = useContext(AuthContext);
@@ -69,7 +68,6 @@ export const EditExams = () => {
   }
 
   const handleOptionChange = (index, value) => {
-    const newOptions = currentQuestion.options.map((option, i) =>
     const newOptions = currentQuestion.options.map((option, i) =>
       i === index ? value : option
     )

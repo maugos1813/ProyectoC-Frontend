@@ -21,7 +21,7 @@ export const ExamProvider = ({ children }) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['exams'],
         queryFn: examenes,
-        enabled: Boolean(localStorage.getItem("userId"))
+        enabled: Boolean(localStorage.getItem("userId") && pathname === '/courses' )
     });
 
 
