@@ -14,6 +14,7 @@ import { CreationE } from "./pagesM/CreationE";
 import { Videos } from "./components/Videos";
 import { Dashboard2 } from "./components/Dashboard2";
 import { EditExams } from "./pagesM/EditExams";
+import { Calificaciones } from "./components/Calificaciones";
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/examenes" element={<Examns />}/>
+          <Route path="/calificaciones" element={<Calificaciones />}/>
           <Route path="/videos" element={<Videos />}/>
           <Route path="/Recording" element={<RecordView />}/>
         </Route>

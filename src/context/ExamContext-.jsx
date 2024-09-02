@@ -10,6 +10,7 @@ export const ExamProvider = ({ children }) => {
     const navigate = useNavigate();
     const [examens, setExamens] = useState([])
     const [result, setResult] = useState([])
+    const [score, setScore] = useState([])
     const { user } = useContext(AuthContext)
     const [newVideo, setNewVideo] = useState('')
 
@@ -38,7 +39,7 @@ export const ExamProvider = ({ children }) => {
     });
 
     useEffect(() => {
-
+        setScore(results)
         const answer = results?.flatMap((rs) => {
             return rs.answers?.filter((as) => as.question_type === 'video')
         })
@@ -63,7 +64,7 @@ export const ExamProvider = ({ children }) => {
 
 
     return (
-        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam }}>
+        <ExamContext.Provider value={{ examens, result, newVideo, setNewVideo, sendExam,score }}>
             {children}
         </ExamContext.Provider>
     )
