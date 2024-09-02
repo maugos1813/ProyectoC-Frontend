@@ -1,25 +1,23 @@
 import { useContext, useState } from 'react'
 import { CreateEContext } from '../context/CreateEContextM'
-import { PreguntaS } from '../components/PreguntaS'
 import { PreguntaO } from '../components/PreguntaO'
 
 export const CreationE = () => {
-    console.log("Rendering CreationE")
     const context = useContext(CreateEContext)
-    console.log("Context:", context)
-    // Check if context is undefined
-    if (!context) {
-        console.log("Context is undefined")
-        return <div>Loading...</div>
-    }
-
-    const { user, createExam } = context
-
+    
     const [examData, setExamData] = useState({
         name: '',
         level_id: '',
         questions: []
     })
+    
+    if (!context) {
+        return <div>Loading...</div>
+    }
+
+    const { user, createExam } = context
+
+    
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -58,20 +56,22 @@ export const CreationE = () => {
                 </div>
                 <div>
                     <label htmlFor="level_id" className="block mb-2">Level ID</label>
-                    <input
-                        type="text"
+                    <select
                         id="level_id"
                         name="level_id"
                         value={examData.level_id}
                         onChange={handleInputChange}
                         className="w-full p-2 border rounded"
                         required
-                    />
+                    >
+                        <option value="">Select a level</option>
+                        <option value="66c4f0f25094893ae4081db4">A1 - Elementary</option>
+                        {/* Add more options based on your available levels */}
+                    </select>
                 </div>
                 
                 <div className="space-y-4">
                     <h2 className="text-xl font-semibold">Add Questions</h2>
-                    <PreguntaS onAddQuestion={handleAddQuestion} />
                     <PreguntaO onAddQuestion={handleAddQuestion} />
                 </div>
                 
@@ -79,7 +79,10 @@ export const CreationE = () => {
                     <h3 className="text-lg font-semibold mb-2">Added Questions:</h3>
                     <ul className="list-disc pl-5">
                         {examData.questions.map((q, index) => (
-                            <li key={index}>{q.text || `Question ${index + 1}`}</li>
+                            <li key={index}>
+                                {q.type === 'open' ? 'Open Question: ' : 'Multiple Choice: '}
+                                {q.statement}
+                            </li>
                         ))}
                     </ul>
                 </div>
