@@ -36,7 +36,7 @@ export default function App() {
 
         <Route element={<NavM />}  >
           <Route path="/dashboard2" element={<Dashboard2 />} />
-          <Route path="/editexams" element={<EditExams/>} />
+          <Route path="/exams" element={<EditExams/>} />
           <Route path="/tablas" element={<Tablas/>}/>
           <Route path="/creation" element={<CreationE/>}/>
         </Route>

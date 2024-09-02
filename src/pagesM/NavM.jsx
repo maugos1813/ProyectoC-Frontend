@@ -20,7 +20,7 @@ export const NavM = () => {
               <Link to="/dashboard2">Home</Link>
             </li>
             <li className="hover:underline">
-              <Link to="/editexams">Exámenes</Link>
+              <Link to="/exams">Exámenes</Link>
             </li>
             <li className="hover:underline">
               <Link to="/tablas">Mis Alumnos</Link>
