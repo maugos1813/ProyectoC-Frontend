@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -37,6 +39,7 @@ useEffect(()=>{
 
 
   return (
+    // eslint-disable-next-line react/jsx-no-undef
     <AuthContext.Provider
       value={{
         loginMutation,

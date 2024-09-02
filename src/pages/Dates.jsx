@@ -1,4 +1,3 @@
- import React from 'react';
  const Dates = () => {
    return (
      <div className="p-8">
