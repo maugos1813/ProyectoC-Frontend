@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { CreateEContext } from '../context/CreateEContextM'
 import { PreguntaO } from '../components/PreguntaO'
+import axios from 'axios'
 
 export const CreationE = () => {
     const context = useContext(CreateEContext)
@@ -10,12 +11,27 @@ export const CreationE = () => {
         level_id: '',
         questions: []
     })
+
+    const [levels, setLevels] = useState([])
     
+    const { user, createExam } = context
+
+    useEffect(() => {
+        const fetchLevels = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/levels/all')
+                setLevels(response.data)
+            } catch (error) {
+                console.error('Error fetching levels:', error)
+            }
+        }
+
+        fetchLevels()
+    }, [])
+
     if (!context) {
         return <div>Loading...</div>
     }
-
-    const { user, createExam } = context
 
     
 
@@ -31,9 +47,15 @@ export const CreationE = () => {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        createExam(examData)
+        try {
+            await createExam(examData)
+            alert('Exam created successfully!')
+        } catch (error) {
+            console.error('Error creating exam:', error)
+            alert('Failed to create exam. Please try again.')
+        }
     }
 
     return (
@@ -55,7 +77,7 @@ export const CreationE = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="level_id" className="block mb-2">Level ID</label>
+                    <label htmlFor="level_id" className="block mb-2">Level</label>
                     <select
                         id="level_id"
                         name="level_id"
@@ -65,8 +87,11 @@ export const CreationE = () => {
                         required
                     >
                         <option value="">Select a level</option>
-                        <option value="66c4f0f25094893ae4081db4">A1 - Elementary</option>
-                        {/* Add more options based on your available levels */}
+                        {levels.map(level => (
+                            <option key={level._id} value={level._id}>
+                                {level.name} - {level.sub_name}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 

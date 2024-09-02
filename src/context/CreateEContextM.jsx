@@ -14,14 +14,12 @@ export const CreateEProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
 
-    // Query to fetch exams
     const { data: examsData, isLoading, isError } = useQuery({
         queryKey: ['exams'],
         queryFn: examenes,
         enabled: pathname === '/dashM'
     });
 
-    // Mutation to create a new exam
     const createExamMutation = useMutation({
         mutationFn: createExam,
         onSuccess: () => {
@@ -33,7 +31,7 @@ export const CreateEProvider = ({ children }) => {
 
     useEffect(() => {
         if (examsData) {
-            setUser(examsData.user); // Assuming the API returns user data along with exams
+            setUser(examsData.user)
             console.log("Exams data:", examsData);
         }
     }, [examsData]);
